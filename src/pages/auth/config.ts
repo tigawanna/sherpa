@@ -4,6 +4,7 @@ import { AuthLayout } from "./AuthLayout";
 import { LoginUser } from "./LoginPage";
 import { SignupPage } from "./Signuppage";
 
+
 interface AuthSearch {
   redirect: string;
 }

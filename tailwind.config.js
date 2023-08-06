@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require("daisyui/src/theming/themes");
+
 /* eslint-disable max-len */
 module.exports = {
   content: [
@@ -128,10 +130,29 @@ module.exports = {
     require("daisyui"),
     require("tailwindcss-animate"),
     require("tailwind-scrollbar"),
-    require("tailwindcss-elevation"),
+    require("tailwindcss-elevation")({
+      color: colors.primary,
+      opacityBoost: "0.23",
+    }),
   ],
   // daisyUI config (optional - here are the default values)
   daisyui: {
-    themes: ["cupcake", "luxury", "light","lofi","bumblebee"],
+    themes: [
+      "luxury",
+      "forest",
+      "light",
+      "lofi",
+      "bumblebee",
+      {
+        cupcake: {
+          ...require("daisyui/src/theming/themes")["[data-theme=cupcake]"],
+          primary: "#FFEDE6",
+          secondary: "#ab5151",
+        },
+      },
+    ],
   },
 };
+
+
+

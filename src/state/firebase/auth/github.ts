@@ -1,6 +1,8 @@
 import { GithubAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../client";
 
+
+
 export async function signInWithGithub(){
     const provider = new GithubAuthProvider();
     provider.addScope('repo');
@@ -27,3 +29,4 @@ export async function signInWithGithub(){
         });
 
 }
+
