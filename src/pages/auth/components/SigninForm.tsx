@@ -88,12 +88,16 @@ const [signInWithEmailAndPassword,_,loading, __,]=useSignInWithEmailAndPassword(
           </div>
           <button
             type="submit"
-            className="px-3 py-1 rounded-lg elevation-3 w-full
-          bg-secondary text-sm font-bold hover:bg-primary-focus">
-            {loading ? <Loader className="w-5 h-5" /> : "Sign in"}
+            className="w-full px-3 py-2 rounded-lg elevation-3
+            flex items-center justify-center
+              bg-secondary text-sm font-bold hover:bg-secondary-focus">
+            {loading ? <Loader className="w-6 h-6 animate-spin" /> : "Sign In"}
           </button>
           <div className="divider text-sm text-accent">
-            <Link to="/auth/signup" search={{redirect:"/"}}> New here? , Create an account </Link>
+            <Link to="/auth/signup" search={{ redirect: "/" }}>
+              {" "}
+              New here? , Create an account{" "}
+            </Link>
           </div>
           <SocialLogin />
         </form>

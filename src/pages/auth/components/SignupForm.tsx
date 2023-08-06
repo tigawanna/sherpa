@@ -106,7 +106,7 @@ function  submitForm(data: TFormValues){
             type="submit"
             className="w-full px-3 py-2 rounded-lg elevation-3
             flex items-center justify-center
-              bg-secondary text-sm font-bold hover:bg-primary-focus">
+              bg-secondary text-sm font-bold hover:bg-secondary-focus">
             {loading ? <Loader className="w-6 h-6 animate-spin" /> : "Sign Up"}
           </button>
 
