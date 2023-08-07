@@ -1,10 +1,11 @@
-import { Route } from "@tanstack/router";
+import { Route, lazyRouteComponent } from "@tanstack/router";
 import { PostsLayout } from "./PostsLayout";
 import { PostsPage } from "./PostsPage";
 import { fetchPostById, fetchPosts } from "../../state/posts/query";
 import { useQuery } from "@tanstack/react-query";
 import { OnePostPage } from "./OnePostPage";
 import { rootLayout } from "@/main";
+
 
 const postsLayout = new Route({
   getParentRoute: () => rootLayout,

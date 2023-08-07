@@ -9,7 +9,7 @@ const adminLayout = new Route({
   path: "admin",
   // auth guard implementation
   component: AdminLayout,
-  beforeLoad(opts) {
+  beforeLoad() {
     if (!(isUserLoggedIn())) {
       throw redirect({
         to: "/auth",

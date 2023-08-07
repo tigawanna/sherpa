@@ -1,7 +1,7 @@
 import { auth } from "@/state/firebase/client";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
-import { LucideGithub, Loader } from "lucide-react";
+
 
 
 import { FcGoogle } from "react-icons/fc";

@@ -10,7 +10,7 @@ const profileLayout = new Route({
   getParentRoute: () => rootLayout,
   path: "profile",
   component: ProfileLayout,
-  beforeLoad(opts) {
+  beforeLoad() {
     if (!(isUserLoggedIn())) {
       throw redirect({
         to: "/auth",

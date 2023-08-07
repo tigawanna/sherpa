@@ -1,4 +1,3 @@
-import { LucideGithub, Loader } from "lucide-react";
 import { useSignInWithGithub } from "react-firebase-hooks/auth";
 import { auth } from "@/state/firebase/client";
 import { toast} from "react-toastify";
