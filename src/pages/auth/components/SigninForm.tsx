@@ -44,6 +44,8 @@ const [signInWithEmailAndPassword,_,loading, __,]=useSignInWithEmailAndPassword(
         <form
           onSubmit={handleSubmit(submitForm)}
           className="h-full w-full md:min-w-[300px] max-w-xs flex flex-col gap-5 items-center justify-center ">
+          
+          {/* email field */}
           <div className="w-full flex flex-col items- gap-1">
             <label htmlFor="email" className="text-sm">
               email
@@ -58,7 +60,9 @@ const [signInWithEmailAndPassword,_,loading, __,]=useSignInWithEmailAndPassword(
               className="input input-sm border border-accent"
             />
           </div>
+
           <div className="w-full flex flex-col gap-3">
+            {/* password field */}
             <div className="flex flex-col gap-1">
               <label htmlFor="password" className="text-sm">
                 password
@@ -73,6 +77,7 @@ const [signInWithEmailAndPassword,_,loading, __,]=useSignInWithEmailAndPassword(
                 className="input input-sm border border-accent"
               />
             </div>
+            {/* show password */}
             <div className="flex  gap-2 items-center  text-xs">
               <input
                 id="show-password"
@@ -85,7 +90,10 @@ const [signInWithEmailAndPassword,_,loading, __,]=useSignInWithEmailAndPassword(
               />
               <label htmlFor="show-password">show password</label>
             </div>
+
           </div>
+
+          {/* submit button */}
           <button
             type="submit"
             className="w-full px-3 py-2 rounded-lg elevation-3
@@ -93,12 +101,14 @@ const [signInWithEmailAndPassword,_,loading, __,]=useSignInWithEmailAndPassword(
               bg-secondary text-sm font-bold hover:bg-secondary-focus">
             {loading ? <Loader className="w-6 h-6 animate-spin" /> : "Sign In"}
           </button>
-          <div className="divider text-sm text-accent">
+
+          <div className="divider text-sm text-info hover:text-info-content h-fit p-0 m-0">
             <Link to="/auth/signup" search={{ redirect: "/" }}>
               {" "}
               New here? , Create an account{" "}
             </Link>
           </div>
+          {/* socila login */}
           <SocialLogin />
         </form>
       </div>

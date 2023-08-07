@@ -40,6 +40,7 @@ function  submitForm(data: TFormValues){
         <form
           onSubmit={handleSubmit(submitForm)}
           className="h-full w-full md:min-w-[300px] max-w-xs flex flex-col gap-3 items-center justify-center ">
+            {/* email */}
           <div className="w-full flex flex-col items- gap-1">
             <label htmlFor="email" className="text-sm">
               email
@@ -55,6 +56,7 @@ function  submitForm(data: TFormValues){
             />
           </div>
           <div className="w-full flex flex-col gap-1">
+            {/* password */}
             <div className="w-full flex flex-col items- gap-1">
               <label htmlFor="password" className="text-sm">
                 password
@@ -69,13 +71,15 @@ function  submitForm(data: TFormValues){
                 className="input input-sm border border-accent"
               />
             </div>
+
             <div className="w-full flex flex-col gap-2">
+              {/* confirm password */}
               <div className="w-full flex flex-col items- gap-1">
                 <label htmlFor="confirm-password" className="text-sm">
                   confirm password
                 </label>
                 <input
-                  id="password"
+                  id="confirmPassword"
                   {...register("confirmPassword", {
                     validate: (value) => value === watch("password"),
                     required: true,
@@ -89,6 +93,8 @@ function  submitForm(data: TFormValues){
                 {errors.confirmPassword && <p className="text-error text-xs">{"Passwords do not match"}</p>}
               </div>
             </div>
+
+            {/* show password */}
             <div className="flex  gap-2 items-center  text-xs">
               <input
                 id="show-password"
@@ -110,7 +116,7 @@ function  submitForm(data: TFormValues){
             {loading ? <Loader className="w-6 h-6 animate-spin" /> : "Sign Up"}
           </button>
 
-          <div className="divider text-sm text-info h-1">
+          <div className="divider text-sm text-info hover:text-info-content h-fit p-0 m-0 ">
             <Link to="/auth" search={{ redirect: "/" }}>
               Already have an account?{" "}
             </Link>

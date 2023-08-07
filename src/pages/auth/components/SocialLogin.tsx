@@ -15,7 +15,7 @@ function loginwithgithub(){
   return (
     <div className="w-full flex flex-col items-center justify-center ">
       <div className="flex flex-col items-center justify-center w-full border-opacity-50">
-        <div className="divider text-sm text-accent h-1">or continue with</div>
+        <div className="divider text-sm text-accent h-fit m-0 mb-2 p-0">or continue with</div>
 
         <div 
         style={{border:error?"1px solid #f00":""}}
