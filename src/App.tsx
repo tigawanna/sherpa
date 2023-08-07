@@ -2,10 +2,7 @@ import { Link, Outlet, useRouter } from "@tanstack/router";
 import { Suspense, useEffect, useState } from "react";
 import { themeChange } from "theme-change";
 import { Nprogress } from "./components/navigation/pprogress/Nprogress";
-import {
-  DevTanStackQueryDevtools,
-  DevTanStackRouterDevtools,
-} from "./components/Devtools";
+import { DevTanStackRouterDevtools} from "./components/Devtools";
 import { ThemeToggle } from "./components/navigation/Theme";
 import { RoutesToolbar } from "./components/navigation/RoutesToolbar";
 import { ToastContainer } from "react-toastify";
@@ -98,7 +95,7 @@ function App() {
       </div>
 
       <Suspense fallback={null}>
-        <DevTanStackQueryDevtools position="right" />
+     
         <DevTanStackRouterDevtools />
       </Suspense>
       <ToastContainer
