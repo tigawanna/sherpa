@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { SocialLogin } from "./SocialLogin";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "@/state/firebase/client";
 import { toast } from "react-toastify";
 import { Loader } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Link } from "@tanstack/router";
+import { SocialLogin } from "./SocialLogin";
 
 
 interface SigninFormProps {

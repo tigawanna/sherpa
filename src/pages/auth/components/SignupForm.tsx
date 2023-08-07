@@ -3,9 +3,10 @@ import { useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
 import { Loader } from "lucide-react";
-import { SocialLogin } from "./SocialLogin";
+
 import { useForm } from "react-hook-form";
 import { Link } from "@tanstack/router";
+import { SocialLogin } from "./SocialLogin";
 
 interface SignupFormProps {}
 
