@@ -56,6 +56,6 @@ export async function logoutFirebaseUser() {
 }
 
 export function isUserLoggedIn(){
-  console.log("is logged in ", auth.currentUser)
+  // console.log("is logged in ", auth.currentUser)
   return auth.currentUser
 }

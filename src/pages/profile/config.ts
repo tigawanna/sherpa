@@ -1,14 +1,25 @@
-import { Route } from "@tanstack/router";
+import { Route, redirect } from "@tanstack/router";
 import { ProfilePage } from "./ProfilePage";
 import { ProfileLayout } from "./ProfileLayout";
 import { ProfileUser } from "./ProfileUser";
 import { rootLayout } from "@/main";
 import { UserDetails } from "./UserDetails";
+import { isUserLoggedIn } from "@/state/firebase/auth/methods";
 
 const profileLayout = new Route({
   getParentRoute: () => rootLayout,
   path: "profile",
   component: ProfileLayout,
+  beforeLoad(opts) {
+    if (!(isUserLoggedIn())) {
+      throw redirect({
+        to: "/auth",
+        search: {
+          redirect: "/profile",
+        },
+      });
+    }
+  },
 });
 const profileIndexRoute = new Route({
   getParentRoute: () => profileLayout,
