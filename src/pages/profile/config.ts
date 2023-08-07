@@ -1,15 +1,11 @@
-import { Route, redirect } from "@tanstack/router";
-import { ProfilePage } from "./ProfilePage";
-import { ProfileLayout } from "./ProfileLayout";
-import { ProfileUser } from "./ProfileUser";
+import { Route, lazyRouteComponent, redirect } from "@tanstack/router";
 import { rootLayout } from "@/main";
-import { UserDetails } from "./UserDetails";
 import { isUserLoggedIn } from "@/state/firebase/auth/methods";
 
 const profileLayout = new Route({
   getParentRoute: () => rootLayout,
   path: "profile",
-  component: ProfileLayout,
+  component: (lazyRouteComponent(() => import("./ProfileLayout"), "ProfileLayout")),
   beforeLoad() {
     if (!(isUserLoggedIn())) {
       throw redirect({
@@ -24,22 +20,17 @@ const profileLayout = new Route({
 const profileIndexRoute = new Route({
   getParentRoute: () => profileLayout,
   path: "/",
-  component: ProfilePage,
+  component: (lazyRouteComponent(() => import("./ProfilePage"), "ProfilePage")),
 });
-const userRoute = new Route({
-  getParentRoute: () => profileLayout,
-  path: "$id",
-  component: ProfileUser,
-});
-export const userDetailsRoute = new Route({
-  getParentRoute: () => profileLayout,
-  path: "/$id/details",
-  component: UserDetails,
-});
+
+// const userRoute = new Route({
+//   getParentRoute: () => profileLayout,
+//   path: "$id",
+//   component: ProfileUser,
+// });
+
 // profile route
 
 export const profileRoute = profileLayout.addChildren([
   profileIndexRoute,
-  userRoute,
-  userDetailsRoute,
 ]);

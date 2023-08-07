@@ -10,9 +10,9 @@ return (
     <Link to="/" activeProps={{ className: "text-info font-bold" }}>
       Home
     </Link>
-    <Link to="/posts" activeProps={{ className: "text-info font-bold" }}>
+    {/* <Link to="/posts" activeProps={{ className: "text-info font-bold" }}>
       posts
-    </Link>
+    </Link> */}
 
     <Link to="/profile" activeProps={{ className: "text-info font-bold" }}>
       profile
