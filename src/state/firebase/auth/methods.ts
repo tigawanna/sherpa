@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword,signInAnonymously, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword,signInAnonymously, signOut, } from "firebase/auth";
 import { auth } from "../client";
 
 export async function createUserWithEmailPassword(email: string, password: string) {
@@ -43,7 +43,7 @@ export async function anonLogin() {
     })
 }
 
-export async function logoutUser() {
+export async function logoutFirebaseUser() {
   return signOut(auth)
     .then(() => {
       // Sign-out successful.
@@ -53,4 +53,9 @@ export async function logoutUser() {
       // An error happened.
       throw error;
     });
+}
+
+export function isUserLoggedIn(){
+  console.log("is logged in ", auth.currentUser)
+  return auth.currentUser
 }

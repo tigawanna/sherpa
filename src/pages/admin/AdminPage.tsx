@@ -1,3 +1,4 @@
+import { logoutFirebaseUser } from "@/state/firebase/auth/methods";
 import { useRouter } from "@tanstack/router";
 
 interface AdminPageProps {}
@@ -5,8 +6,8 @@ interface AdminPageProps {}
 export function AdminPage({}: AdminPageProps) {
   const router = useRouter();
 
-  function logoutUser() {
-    localStorage.removeItem("is_authed");
+  async function logoutUser() {
+    await logoutFirebaseUser();
     router.reload();
   }
   return (
