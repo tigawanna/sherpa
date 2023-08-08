@@ -2,22 +2,24 @@ import { Route, redirect } from "@tanstack/router";
 import { rootLayout } from "@/main";
 import { AdminLayout } from "./AdminLayout";
 import { AdminPage } from "./AdminPage";
-import { isUserLoggedIn } from "@/state/firebase/auth/methods";
+
 
 const adminLayout = new Route({
   getParentRoute: () => rootLayout,
   path: "admin",
   // auth guard implementation
   component: AdminLayout,
-  beforeLoad() {
- if (!(isUserLoggedIn())) {
-      throw redirect({
-        to: "/auth",
-        search: {
-          redirect: "/admin",
-        },
-      });
-    }
+ async beforeLoad(route) {
+    const auth = route.context.auth
+    await auth.authStateReady()
+        if (!auth.currentUser) {
+          throw redirect({
+            to: "/auth",
+            search: {
+              redirect: "/admin",
+            },
+          });
+        }
   },
 });
 const indexRoute = new Route({
@@ -25,7 +27,6 @@ const indexRoute = new Route({
   path: "/",
   component: AdminPage,
   
-
 });
 
 // profile route

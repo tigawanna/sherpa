@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { auth } from "@/state/firebase/client";
+import { auth } from "@/main";
 import { toast } from "react-toastify";
 import { Loader } from "lucide-react";
 import { useForm } from "react-hook-form";

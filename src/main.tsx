@@ -1,13 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-
 import { Router, RouterContext, RouterProvider } from "@tanstack/router";
-
 import App from "./App";
 import { routes } from "./pages/routes/routes";
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { firebaseConfig } from "./state/firebase/client";
 
-const routerContext = new RouterContext<{}>();
+
+export const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+
+
+const routerContext = new RouterContext<{
+  app: typeof app;
+  auth: typeof auth;
+}>();
 
 // Create a root route
 export const rootLayout = routerContext.createRootRoute({
@@ -19,7 +28,10 @@ const routeTree = rootLayout.addChildren(routes);
 
 export const router = new Router({
   routeTree,
-  context: {},
+  context: {
+    app,
+    auth,
+  },
 });
 
 // Register your router for maximum type safety

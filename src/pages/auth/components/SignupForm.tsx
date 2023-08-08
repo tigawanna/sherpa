@@ -1,4 +1,4 @@
-import { auth } from "@/state/firebase/client";
+import { auth } from "@/main";
 import { useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
@@ -10,29 +10,34 @@ import { SocialLogin } from "./SocialLogin";
 
 interface SignupFormProps {}
 
-
-
 export function SignupForm({}: SignupFormProps) {
-const defaultValues= {
+  const defaultValues = {
     email: "",
     password: "",
     confirmPassword: "",
-}
-type TFormValues = typeof defaultValues
-const {register,handleSubmit,watch,formState: { errors },} = useForm({defaultValues});
-const [showPassword, setShowPassword]=useState(false)
-const [createUserWithEmailAndPassword,_,loading,__] = useCreateUserWithEmailAndPassword(auth);
+  };
+  type TFormValues = typeof defaultValues;
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({ defaultValues });
+  const [showPassword, setShowPassword] = useState(false);
+  const [createUserWithEmailAndPassword, _, loading, __] = useCreateUserWithEmailAndPassword(auth);
 
-function  submitForm(data: TFormValues){
-      createUserWithEmailAndPassword(data.email,data.password).then(()=>{
+  function submitForm(data: TFormValues) {
+    createUserWithEmailAndPassword(data.email, data.password)
+      .then(() => {
         toast("Account created successfully", {
           type: "success",
         });
-      }).catch((error)=>{
+      })
+      .catch((error) => {
         toast(error.message, {
           type: "error",
         });
-      })
+      });
   }
 
   return (
@@ -41,7 +46,7 @@ function  submitForm(data: TFormValues){
         <form
           onSubmit={handleSubmit(submitForm)}
           className="h-full w-full md:min-w-[300px] max-w-xs flex flex-col gap-3 items-center justify-center ">
-            {/* email */}
+          {/* email */}
           <div className="w-full flex flex-col items- gap-1">
             <label htmlFor="email" className="text-sm">
               email
@@ -91,7 +96,9 @@ function  submitForm(data: TFormValues){
                   placeholder="confirm password"
                   className="input input-sm border border-accent"
                 />
-                {errors.confirmPassword && <p className="text-error text-xs">{"Passwords do not match"}</p>}
+                {errors.confirmPassword && (
+                  <p className="text-error text-xs">{"Passwords do not match"}</p>
+                )}
               </div>
             </div>
 

@@ -1,5 +1,5 @@
 import { useSignInWithGithub } from "react-firebase-hooks/auth";
-import { auth } from "@/state/firebase/client";
+import { auth } from "@/main";
 import { toast} from "react-toastify";
 import { FaGithub } from "react-icons/fa";
 import { LuLoader } from "react-icons/lu";

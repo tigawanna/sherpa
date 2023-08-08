@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword,signInAnonymously, signOut, } from "firebase/auth";
-import { auth } from "../client";
+import { auth } from "@/main";
 
 export async function createUserWithEmailPassword(email: string, password: string) {
   return createUserWithEmailAndPassword(auth, email, password)
