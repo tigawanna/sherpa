@@ -1,4 +1,4 @@
-import { Route } from "@tanstack/router";
+import { Route, redirect } from "@tanstack/router";
 import { rootLayout } from "@/main";
 import { AuthLayout } from "./AuthLayout";
 import { LoginUser } from "./LoginPage";
@@ -19,6 +19,15 @@ export const authlayout = new Route({
       redirect: (search.redirect as string) ?? "/",
     };
   },
+  async beforeLoad(route) {
+    const auth = route.context.auth;
+    await auth.authStateReady();
+    if (auth.currentUser) {
+      throw redirect({
+        to: "..",
+      });
+    }
+  }
 });
 const authIndexRoute = new Route({
   getParentRoute: () => authlayout,

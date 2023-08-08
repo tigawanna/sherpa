@@ -12,25 +12,25 @@ export function AuthLayout({}: AuthLayoutProps) {
   const { redirect } = useSearch({ from: authlayout.id });
   const [user,loading,error] = useAuthState(ctx.auth,{
     
-    // async onUserChanged(user) {
-    //   if (user) {
-    //     route.router?.navigate({
-    //       to: redirect,
-    //       // @ts-expect-error
-    //       search: (prev) => ({ redirect: prev?.redirect }),
-    //     });
-    //   }
-    // },
+    async onUserChanged(user) {
+      if (user) {
+        route.router?.navigate({
+          to: redirect,
+          // @ts-expect-error
+          search: (prev) => ({ redirect: prev?.redirect }),
+        });
+      }
+    },
   });
-  useEffect(() => {
-    if (user) {
-      route.router?.navigate({
-        to: redirect,
-        // @ts-expect-error
-        search: (prev) => ({ redirect: prev?.redirect }),
-      });
-    }
-  })
+  // useEffect(() => {
+  //   if (user) {
+  //     route.router?.navigate({
+  //       to: redirect,
+  //       // @ts-expect-error
+  //       search: (prev) => ({ redirect: prev?.redirect }),
+  //     });
+  //   }
+  // })
 
 return (
     <div className="w-full min-h-full flex flex-col items-center justify-center">

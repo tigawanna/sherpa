@@ -16,7 +16,7 @@ const adminLayout = new Route({
           throw redirect({
             to: "/auth",
             search: {
-              redirect: "/admin",
+              redirect: adminRoute.router?.state.location.href??"/admin",
             },
           });
         }
